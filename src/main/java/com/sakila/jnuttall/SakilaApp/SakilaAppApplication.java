@@ -42,4 +42,11 @@ public class SakilaAppApplication {
 	public void change(@RequestParam int id, @RequestParam String first_name, @RequestParam String last_name) {
 
 	}
+
+	@DeleteMapping("/delete/{id}")
+	@ResponseBody
+	public String deleteActor(@PathVariable Integer id){
+		actorRepository.deleteById(id);
+		return("Actor: "+id+" has been deleted!");
+	}
 }

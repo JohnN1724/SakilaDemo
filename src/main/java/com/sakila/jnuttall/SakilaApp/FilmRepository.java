@@ -1,2 +1,4 @@
-package com.sakila.jnuttall.SakilaApp;public interface FilmRepository {
+package com.sakila.jnuttall.SakilaApp;
+
+public interface FilmRepository {
 }

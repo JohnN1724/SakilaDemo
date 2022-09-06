@@ -1,52 +1,61 @@
 package com.sakila.jnuttall.SakilaApp;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.util.Collections;
 import java.util.Optional;
 
 @SpringBootApplication
 @RestController
-@RequestMapping("/Home")
+@RequestMapping("/home")
 @CrossOrigin
 public class SakilaAppApplication {
-
+	public static void main(String[] args) {
+		SpringApplication.run(SakilaAppApplication.class, args);
+	}
 	@Autowired
 	private ActorRepository actorRepository;
 
-	public SakilaAppApplication(ActorRepository actorRepository) {
+	@Autowired
+	private FilmRepository filmRepository;
 
+	public SakilaAppApplication(ActorRepository actorRepository){
 		this.actorRepository = actorRepository;
-	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(SakilaAppApplication.class, args);
 	}
 
 	@GetMapping("/allActors")
 	public @ResponseBody
-	Iterable<Actor> getAllActors() {
+	Iterable<Actor> getAllActors(){
 		return actorRepository.findAll();
 	}
 
-	@GetMapping("/getActor/{id}")
-	public @ResponseBody
-	Optional<Actor> getActor(@PathVariable Integer id) {
+	@GetMapping("/actor/{id}")
+	public Optional<Actor> getActorById(@PathVariable("id") int id) {
 		return actorRepository.findById(id);
 	}
 
-	@PutMapping("/add")
-	@ResponseBody
-	public void change(@RequestParam int id, @RequestParam String first_name, @RequestParam String last_name) {
-
+	@GetMapping("/categories/{id}")
+	public Object getFilmCategory(@PathVariable("id") int id) {
+		return this.filmRepository.getCategory(id);
 	}
 
-	@DeleteMapping("/delete/{id}")
-	@ResponseBody
-	public String deleteActor(@PathVariable Integer id){
-		actorRepository.deleteById(id);
-		return("Actor: "+id+" has been deleted!");
+	@GetMapping("/film")
+	public @ResponseBody Iterable<Film> getAllFilms() {
+		return filmRepository.findAll();
 	}
+
+	@GetMapping("/filmStats")
+	public @ResponseBody Iterable<Object> getFilmStats() {
+		return filmRepository.getFilmInfo();
+	}
+
+
+
+
 }

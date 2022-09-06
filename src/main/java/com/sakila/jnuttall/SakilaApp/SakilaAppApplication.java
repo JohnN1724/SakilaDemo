@@ -50,8 +50,8 @@ public class SakilaAppApplication {
 		return filmRepository.findAll();
 	}
 
-	@GetMapping("/filmStats")
-	public @ResponseBody Iterable<Object> getFilmStats() {
+	@GetMapping("/filmInfo")
+	public @ResponseBody Iterable<Object> getFilmInfo() {
 		return filmRepository.getFilmInfo();
 	}
 

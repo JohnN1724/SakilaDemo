@@ -20,13 +20,17 @@ public class SakilaAppApplication {
 	private ActorRepository actorRepository;
 	private FilmRepository filmRepository;
 	private CategoryRepository categoryRepository;
+	private LanguageRepository languageRepository;
 
 
 	public SakilaAppApplication(ActorRepository actorRepository,
-								FilmRepository filmRepository, CategoryRepository categoryRepository) {
+								FilmRepository filmRepository, CategoryRepository categoryRepository,
+								LanguageRepository languageRepository) {
+
 		this.actorRepository = actorRepository;
 		this.filmRepository = filmRepository;
 		this.categoryRepository = categoryRepository;
+		this.languageRepository = languageRepository;
 	}
 
 
@@ -138,11 +142,39 @@ public class SakilaAppApplication {
 
 	@PutMapping("/editCategory/{id}")
 	@ResponseBody
-	public String editCategory(@PathVariable Integer id, @RequestBody Category newCat) {
+	public String editCategory(@PathVariable Integer id, @RequestBody Category newCategory) {
 		Category category = categoryRepository.findById(id).get();
-		category.setCategoryName(newCat.categoryName);
+		category.setCategoryName(newCategory.categoryName);
 		categoryRepository.save(category);
 		return ("Category: " + id + " has been edited");
+	}
+
+	@GetMapping("/allLanguage")
+	@ResponseBody
+	public Iterable<Language> getAllLanguage() {
+		return languageRepository.findAll();
+	}
+
+	@GetMapping("/Language/{id}")
+	@ResponseBody
+	public Optional<Language> getLanguage(@PathVariable Integer id) {
+		return languageRepository.findById(id);
+	}
+
+	@DeleteMapping("/removeLanguage/{id}")
+	@ResponseBody
+	public String removeLanguage(@PathVariable Integer id) {
+		languageRepository.deleteById(id);
+		return ("Language: " + id + " has been removed");
+	}
+
+	@PutMapping("/editLanguage/{id}")
+	@ResponseBody
+	public String editLanguage(@PathVariable Integer id, @RequestBody Language newLanguage) {
+		Language language = languageRepository.findById(id).get();
+		language.setName(newLanguage.name);
+		languageRepository.save(language);
+		return ("Language: " + id + " has been edited");
 	}
 
 }

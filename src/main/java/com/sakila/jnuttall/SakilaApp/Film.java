@@ -38,7 +38,6 @@ public class Film {
     @Column(name = "last_update")
     LocalDateTime last_update;
 
-    private List<Actor> ActorList= new ArrayList();
 
     public Film(int actor_id, String title, String description, int release_year, int language_id,
                 int original_language_id, int rental_duration, float rental_rate, int length, float replacement_cost,
@@ -60,14 +59,6 @@ public class Film {
     }
 
     public Film(){}
-
-    public List<Actor> getActorList() {
-        return ActorList;
-    }
-
-    public void setActorList(List<Actor> actorList) {
-        ActorList = actorList;
-    }
 
     public int getActor_id() {
         return actor_id;
@@ -173,9 +164,6 @@ public class Film {
         this.last_update = last_update;
     }
 
-    public void addActor(Actor a){
-        this.ActorList.add(a);
-    }
 }
 
 

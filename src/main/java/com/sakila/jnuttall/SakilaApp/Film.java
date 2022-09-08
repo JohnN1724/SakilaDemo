@@ -12,7 +12,7 @@ public class Film {
     @Id
     @Column(name = "film_id")
     @GeneratedValue(strategy = GenerationType.TABLE)
-    int actor_id;
+    int film_id;
     @Column(name = "title")
     String title;
     @Column(name = "description")
@@ -39,11 +39,11 @@ public class Film {
     LocalDateTime last_update;
 
 
-    public Film(int actor_id, String title, String description, int release_year, int language_id,
+    public Film(int film_id, String title, String description, int release_year, int language_id,
                 int original_language_id, int rental_duration, float rental_rate, int length, float replacement_cost,
                 String rating, String special_features, LocalDateTime last_update){
 
-        this.actor_id = actor_id;
+        this.film_id = film_id;
         this.title = title;
         this.description = description;
         this.release_year = release_year;
@@ -60,12 +60,12 @@ public class Film {
 
     public Film(){}
 
-    public int getActor_id() {
-        return actor_id;
+    public int getFilm_id() {
+        return film_id;
     }
 
-    public void setActor_id(int actor_id) {
-        this.actor_id = actor_id;
+    public void setFilm_id(int actor_id) {
+        this.film_id = actor_id;
     }
 
     public String getTitle() {

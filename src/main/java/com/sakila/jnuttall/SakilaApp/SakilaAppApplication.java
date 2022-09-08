@@ -20,16 +20,21 @@ public class SakilaAppApplication {
 	private ActorRepository actorRepository;
 	private FilmRepository filmRepository;
 	private CategoryRepository categoryRepository;
+
+	private FilmCategoryRepository filmCategoryRepository;
 	private LanguageRepository languageRepository;
 
 
 	public SakilaAppApplication(ActorRepository actorRepository,
-								FilmRepository filmRepository, CategoryRepository categoryRepository,
+								FilmRepository filmRepository,
+								CategoryRepository categoryRepository,
+								FilmCategoryRepository filmCategoryRepository,
 								LanguageRepository languageRepository) {
 
 		this.actorRepository = actorRepository;
 		this.filmRepository = filmRepository;
 		this.categoryRepository = categoryRepository;
+		this.filmCategoryRepository = filmCategoryRepository;
 		this.languageRepository = languageRepository;
 	}
 
@@ -121,7 +126,7 @@ public class SakilaAppApplication {
 		return ("Film: " + id + " has been edited");
 	}
 
-	@GetMapping("/allCategory")
+	@GetMapping("/allCategories")
 	@ResponseBody
 	public Iterable<Category> getAllCategory() {
 		return categoryRepository.findAll();

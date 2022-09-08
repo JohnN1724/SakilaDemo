@@ -21,8 +21,6 @@ public class Film {
     int release_year;
     @Column(name = "language_id")
     int language_id;
-    @Column(name = "original_language_id")
-    int original_language_id;
     @Column(name = "rental_duration")
     int rental_duration;
     @Column(name = "rental_rate")
@@ -40,7 +38,7 @@ public class Film {
 
 
     public Film(int film_id, String title, String description, int release_year, int language_id,
-                int original_language_id, int rental_duration, float rental_rate, int length, float replacement_cost,
+                int rental_duration, float rental_rate, int length, float replacement_cost,
                 String rating, String special_features, LocalDateTime last_update){
 
         this.film_id = film_id;
@@ -48,7 +46,6 @@ public class Film {
         this.description = description;
         this.release_year = release_year;
         this.language_id = language_id;
-        this.original_language_id = original_language_id;
         this.rental_duration = rental_duration;
         this.rental_rate = rental_rate;
         this.length = length;
@@ -98,14 +95,6 @@ public class Film {
 
     public void setLanguage_id(int language_id) {
         this.language_id = language_id;
-    }
-
-    public int getOriginal_language_id() {
-        return original_language_id;
-    }
-
-    public void setOriginal_language_id(int original_language_id) {
-        this.original_language_id = original_language_id;
     }
 
     public int getRental_duration() {

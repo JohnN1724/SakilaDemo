@@ -39,7 +39,7 @@ public class Film {
 
     public Film(int film_id, String title, String description, int release_year, int language_id,
                 int rental_duration, float rental_rate, int length, float replacement_cost,
-                String rating, String special_features, LocalDateTime last_update){
+                String rating, String special_features){
 
         this.film_id = film_id;
         this.title = title;
@@ -52,7 +52,6 @@ public class Film {
         this.replacement_cost = replacement_cost;
         this.rating = rating;
         this.special_features = special_features;
-        this.last_update = last_update;
     }
 
     public Film(){}
@@ -143,14 +142,6 @@ public class Film {
 
     public void setSpecial_features(String special_features) {
         this.special_features = special_features;
-    }
-
-    public LocalDateTime getLast_update() {
-        return last_update;
-    }
-
-    public void setLast_update(LocalDateTime last_update) {
-        this.last_update = last_update;
     }
 
 }

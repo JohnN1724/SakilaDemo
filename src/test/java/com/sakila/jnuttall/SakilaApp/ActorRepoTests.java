@@ -13,8 +13,7 @@ import java.util.List;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class FilmRepoTests {
-
+public class ActorRepoTests {
 
     SakilaAppApplication sakilaAppApplication;
 
@@ -37,28 +36,25 @@ public class FilmRepoTests {
     }
 
     @Test
-    void testGetAllFilms(){
+    void testAllActors(){
 
-        List<Film> filmList = new ArrayList<>();
+        List <Actor> actorList = new ArrayList<>();
 
-        Film testFilm = new Film (1,"Filmy Film", "Adventure", 2005,
-                6, 5, 1.99, 88, 4, "PG", "Bonus features" );
-        Film testFilm2 = new Film(2,"Filmington", "Period Drama Romcom", 2005,
-                6, 88, 1.99, 90, 3, "PG", "Behind the scenes");
+        Actor testActor = new Actor(1, "Pingu", "Penguin");
+        Actor anotherActor = new Actor(2, "Postman", "Pat");
 
-        filmList.add(testFilm);
-        filmList.add(testFilm2);
+        actorList.add(testActor);
+        actorList.add(anotherActor);
 
-        Iterable <Film> filmIterable = filmList;
+        Iterable <Actor> actorIterable = actorList;
 
-        when(filmRepository.findAll()).thenReturn(filmIterable);
+        when(actorRepository.findAll()).thenReturn(actorIterable);
 
-        Iterable <Film> Expected = filmIterable;
-        Iterable <Film> Actual = sakilaAppApplication.getAllFilms();
+        Iterable <Actor> Expected = actorIterable;
+        Iterable <Actor> Actual = sakilaAppApplication.getAllActors();
 
-        Assertions.assertEquals(Expected, Actual, "Error: All Films have not been returned\n" +
-                "Actual Results: " + Actual);
+        Assertions.assertEquals(Expected, Actual , "Error - Not all actors were returned\n"
+        + "Actual results: " + Actual);
 
     }
-
 }

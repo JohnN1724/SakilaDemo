@@ -13,7 +13,7 @@ import java.util.List;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class FilmRepoTests {
+public class CategoryRepoTests {
 
 
     SakilaAppApplication sakilaAppApplication;
@@ -31,34 +31,34 @@ public class FilmRepoTests {
 
 
     @BeforeEach
-    void setup(){
+    void setup()
+    {
         sakilaAppApplication = new SakilaAppApplication(actorRepository, filmRepository, categoryRepository,
                 filmCategoryRepository, languageRepository);
     }
 
+
     @Test
-    void testGetAllFilms(){
+    void getAllCategories()
+    {
 
-        List<Film> filmList = new ArrayList<>();
+        List<Category> categoryList = new ArrayList<>();
 
-        Film testFilm = new Film (1,"Filmy Film", "Adventure", 2005,
-                6, 5, 1.99, 88, 4, "PG", "Bonus features" );
-        Film testFilm2 = new Film(2,"Filmington", "Period Drama Romcom", 2005,
-                6, 88, 1.99, 90, 3, "PG", "Behind the scenes");
+        Category testCat = new Category(1,"Adventure");
+        Category testCat2 = new Category(2, "Viking");
 
-        filmList.add(testFilm);
-        filmList.add(testFilm2);
+        categoryList.add(testCat);
+        categoryList.add(testCat2);
 
-        Iterable <Film> filmIterable = filmList;
+        Iterable <Category> categoryIterable = categoryList;
 
-        when(filmRepository.findAll()).thenReturn(filmIterable);
+        when(categoryRepository.findAll()).thenReturn(categoryIterable);
 
-        Iterable <Film> Expected = filmIterable;
-        Iterable <Film> Actual = sakilaAppApplication.getAllFilms();
+        Iterable <Category> Expected = categoryIterable;
+        Iterable <Category> Actual = sakilaAppApplication.getAllCategory();
 
-        Assertions.assertEquals(Expected, Actual, "Error: All Films have not been returned\n" +
-                "Actual Results: " + Actual);
+        Assertions.assertEquals(Expected, Actual, "Error: All categories weren't returned \n"
+        + "Actual results: " + Actual);
 
     }
-
 }

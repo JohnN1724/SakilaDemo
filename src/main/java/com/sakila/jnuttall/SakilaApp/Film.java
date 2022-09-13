@@ -24,11 +24,11 @@ public class Film {
     @Column(name = "rental_duration")
     int rental_duration;
     @Column(name = "rental_rate")
-    float rental_rate;
+    double rental_rate;
     @Column(name = "length")
     int length;
     @Column(name = "replacement_cost")
-    float replacement_cost;
+    double replacement_cost;
     @Column(name = "rating")
     String rating;
     @Column(name = "special_features")
@@ -38,7 +38,7 @@ public class Film {
 
 
     public Film(int film_id, String title, String description, int release_year, int language_id,
-                int rental_duration, float rental_rate, int length, float replacement_cost,
+                int rental_duration, double rental_rate, int length, double replacement_cost,
                 String rating, String special_features){
 
         this.film_id = film_id;
@@ -104,7 +104,7 @@ public class Film {
         this.rental_duration = rental_duration;
     }
 
-    public float getRental_rate() {
+    public double getRental_rate() {
         return rental_rate;
     }
 
@@ -120,7 +120,7 @@ public class Film {
         this.length = length;
     }
 
-    public float getReplacement_cost() {
+    public double getReplacement_cost() {
         return replacement_cost;
     }
 

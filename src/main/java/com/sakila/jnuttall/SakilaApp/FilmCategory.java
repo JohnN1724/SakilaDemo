@@ -11,24 +11,24 @@ public class FilmCategory {
     @Id
     @Column(name = "film_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int actorId;
+    int filmId;
     @Column(name = "category_id")
     int categoryId;
 
-    public FilmCategory(int actorId, int categoryId){
+    public FilmCategory(int filmId, int categoryId){
 
-        this.actorId = actorId;
+        this.filmId = filmId;
         this.categoryId = categoryId;
     }
 
     public FilmCategory(){}
 
-    public int getActorId() {
-        return actorId;
+    public int getFilmId() {
+        return filmId;
     }
 
-    public void setActorId(int actorId) {
-        this.actorId = actorId;
+    public void setFilmId(int filmId) {
+        this.filmId = filmId;
     }
 
     public int getCategoryId() {

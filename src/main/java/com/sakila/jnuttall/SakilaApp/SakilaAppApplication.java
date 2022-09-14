@@ -182,4 +182,32 @@ public class SakilaAppApplication {
 		return ("Language: " + id + " has been edited");
 	}
 
+	@GetMapping("/allFilmCategories")
+	@ResponseBody
+	public Iterable<FilmCategory> getAllFilmCategory() {
+		return filmCategoryRepository.findAll();
+	}
+
+	@GetMapping("/FilmCategory/{id}")
+	@ResponseBody
+	public Optional<FilmCategory> getFilmCategory(@PathVariable Integer id) {
+		return filmCategoryRepository.findById(id);
+	}
+
+	@DeleteMapping("/removeFilmCategory/{id}")
+	@ResponseBody
+	public String removeFilmCategory(@PathVariable Integer id) {
+		filmCategoryRepository.deleteById(id);
+		return ("Film category: " + id + " has been removed");
+	}
+
+	@PutMapping("/editFilmCategory/{id}")
+	@ResponseBody
+	public String editFilmCategory(@PathVariable Integer id, @RequestBody FilmCategory newFilmCategory) {
+		FilmCategory filmCategory = filmCategoryRepository.findById(id).get();
+		filmCategory.setCategoryId(newFilmCategory.categoryId);
+		filmCategoryRepository.save(filmCategory);
+		return ("Film category: " + id + " has been edited");
+	}
+
 }

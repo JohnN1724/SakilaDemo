@@ -66,7 +66,7 @@ public class FilmCategoryRepoTests {
 
     }
 
-    @Test
+/*    @Test
     void testAFilmCategory(){
         when(filmCategoryRepository.findById(1)).thenReturn(Optional.of(new FilmCategory()));
         FilmCategory output = filmCategoryRepository.findById(1).get();
@@ -86,7 +86,7 @@ public class FilmCategoryRepoTests {
         ArgumentCaptor<FilmCategory> captor = ArgumentCaptor.forClass(FilmCategory.class);
         sakilaAppApplication.editFilmCategory(1, newCategoryId);
         verify(filmCategoryRepository).save(newCategoryId);
-    }
+    } */
 
 }
 

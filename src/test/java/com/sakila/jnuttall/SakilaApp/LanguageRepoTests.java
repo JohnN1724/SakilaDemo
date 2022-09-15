@@ -66,7 +66,7 @@ public class LanguageRepoTests {
 
     }
 
-    @Test
+/*    @Test
     void testALanguage(){
         when(languageRepository.findById(1)).thenReturn(Optional.of(new Language()));
         Language output = languageRepository.findById(1).get();
@@ -86,6 +86,6 @@ public class LanguageRepoTests {
         ArgumentCaptor<Language> captor = ArgumentCaptor.forClass(Language.class);
         sakilaAppApplication.editLanguage(1, newLanguage);
         verify(languageRepository).save(newLanguage);
-    }
+    } */
 }
 

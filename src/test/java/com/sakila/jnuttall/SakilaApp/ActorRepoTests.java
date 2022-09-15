@@ -60,7 +60,7 @@ public class ActorRepoTests {
         + "Actual results: " + Actual);
 
     }
-
+/*
     @Test
     void testAnActor(){
         when(actorRepository.findById(1)).thenReturn(Optional.of(new Actor()));
@@ -81,5 +81,5 @@ public class ActorRepoTests {
         ArgumentCaptor<Actor> captor = ArgumentCaptor.forClass(Actor.class);
         sakilaAppApplication.editActor(1, newFirstName);
         verify(actorRepository).save(newFirstName);
-    }
+    } */
 }

@@ -64,7 +64,7 @@ public class FilmRepoTests {
 
     }
 
-    @Test
+/*    @Test
     void testAFilm(){
         when(filmRepository.findById(1)).thenReturn(Optional.of(new Film()));
         Film output = filmRepository.findById(1).get();
@@ -84,5 +84,5 @@ public class FilmRepoTests {
         ArgumentCaptor<Film> captor = ArgumentCaptor.forClass(Film.class);
         sakilaAppApplication.editFilm(1, newTitle);
         verify(filmRepository).save(newTitle);
-    }
+    } */
 }

@@ -16,7 +16,7 @@ public class SakilaAppApplication {
 
 	@Autowired
 
-	//create objects
+	//Create Repos
 	private ActorRepository actorRepository;
 	private FilmRepository filmRepository;
 	private CategoryRepository categoryRepository;

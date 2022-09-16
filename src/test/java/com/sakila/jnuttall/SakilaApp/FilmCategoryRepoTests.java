@@ -66,27 +66,6 @@ public class FilmCategoryRepoTests {
 
     }
 
-/*    @Test
-    void testAFilmCategory(){
-        when(filmCategoryRepository.findById(1)).thenReturn(Optional.of(new FilmCategory()));
-        FilmCategory output = filmCategoryRepository.findById(1).get();
-        FilmCategory expected = new FilmCategory();
-        Assertions.assertEquals(expected, output, "Error: Incorrect film category was returned\n" +
-                "Actual results: " + output);
-
-    }
-
-    @Test
-    void testEditFilmCategory(){
-        FilmCategory filmCategory = new FilmCategory();
-        Assertions.assertEquals((Integer) null, filmCategory.categoryId);
-        when(filmCategoryRepository.findById(1)).thenReturn(Optional.of(filmCategory));
-        FilmCategory newCategoryId = new FilmCategory();
-        newCategoryId.setCategoryId(9);
-        ArgumentCaptor<FilmCategory> captor = ArgumentCaptor.forClass(FilmCategory.class);
-        sakilaAppApplication.editFilmCategory(1, newCategoryId);
-        verify(filmCategoryRepository).save(newCategoryId);
-    } */
 
 }
 

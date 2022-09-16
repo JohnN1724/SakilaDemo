@@ -1,5 +1,5 @@
-Feature: A category is retrieved on load
-  Scenario: verify the category is retrieved
-    Given there is a category ID
-    And the api gets the category
-    Then display a category
+Feature: A category is returned
+  Scenario: Confrim the correct category is returned
+    Given A category has been requested
+    And The API returns the requested category
+    Then The requested category is displayed

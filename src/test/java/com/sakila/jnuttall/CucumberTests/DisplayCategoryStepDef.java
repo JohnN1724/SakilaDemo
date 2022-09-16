@@ -29,8 +29,7 @@ public class DisplayCategoryStepDef {
     private FilmCategoryRepository filmCategoryRepository;
 
 
-    @BeforeEach
-    void setup(){
+    public DisplayCategoryStepDef(){
 
         filmRepository = mock(FilmRepository.class);
         categoryRepository = mock(CategoryRepository.class);
@@ -44,23 +43,24 @@ public class DisplayCategoryStepDef {
 
     Category testCategory;
     Category expected;
-    @Given("there is a category ID")
-    public void there_is_an_id() {
+    @Given("A category has been requested")
+    public void a_category_has_been_requested() {
         int id = 1;
         expected = new Category();
         expected.setCategoryId(1);
-        expected.setCategoryName("test title");
+        expected.setCategoryName("Vikings");
     }
 
-    @When("the api gets the category")
-    public void the_api_is_connected() {
+    @When("The API returns the requested category")
+    public void the_api_returns_the_requested_category() {
         when(categoryRepository.findById(1)).thenReturn(Optional.of(expected));
         testCategory = categoryRepository.findById(1).get();
     }
 
-    @Then("display a category")
-    public void display_a_single_film() {
-        Assertions.assertEquals(expected, testCategory, "oopsie doopsie");
+    @Then("The requested category is displayed")
+    public void the_requested_category_is_displayed() {
+        Assertions.assertEquals(expected, testCategory, "Error: Desired category wasn't returned\n" +
+                "Actual results:" + testCategory);
     }
 
 }

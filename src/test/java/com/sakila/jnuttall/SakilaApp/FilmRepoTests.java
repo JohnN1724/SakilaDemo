@@ -64,18 +64,6 @@ public class FilmRepoTests {
 
     }
 
-/*    @Test
-    void editFilmTitle() {
-        Film film = new Film();
-        Assertions.assertEquals(null, film.title);
-        when(filmRepository.findById(1)).thenReturn(Optional.of(film));
-        Film newTitle = new Film();
-        newTitle.setTitle("Jaws");
-        ArgumentCaptor<Film> captor = ArgumentCaptor.forClass(Film.class);
-        sakilaAppApplication.editFilm(1, newTitle);
-        verify(filmRepository).save(newTitle);
-    } */
-
     @Test
     void getFilmID() {
         Film film = new Film();

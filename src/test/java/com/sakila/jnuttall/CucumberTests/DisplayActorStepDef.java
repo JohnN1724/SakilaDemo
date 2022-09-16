@@ -5,7 +5,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 
 import java.util.Optional;
@@ -29,8 +28,7 @@ public class DisplayActorStepDef {
     private FilmCategoryRepository filmCategoryRepository;
 
 
-    @BeforeEach
-    void setup(){
+    public DisplayActorStepDef(){
 
         filmRepository = mock(FilmRepository.class);
         categoryRepository = mock(CategoryRepository.class);
@@ -44,24 +42,29 @@ public class DisplayActorStepDef {
 
     Actor testActor;
     Actor expected;
-    @Given("there is an Actor ID")
-    public void there_is_an_id() {
+    @Given("when an Actor ID is requested")
+    public void when_an_actor_id_is_requested() {
+        // Write code here that turns the phrase above into concrete actions
         int id = 1;
         expected = new Actor();
         expected.setActorId(1);
-        expected.setFirst_name("First Name");
-        expected.setLast_name("Last Name");
+        expected.setFirst_name("Bill");
+        expected.setLast_name("Bob");
     }
 
-    @When("the api connects to actor")
-    public void the_api_is_connected() {
+    @Given("the API requests the actor")
+    public void the_api_requests_the_actor() {
+        // Write code here that turns the phrase above into concrete actions
         when(actorRepository.findById(1)).thenReturn(Optional.of(expected));
         testActor = actorRepository.findById(1).get();
+        throw new io.cucumber.java.PendingException();
     }
 
-    @Then("display an actor")
-    public void display_film() {
+    @Then("the actor is displayed")
+    public void the_actor_is_displayed() {
+        // Write code here that turns the phrase above into concrete actions
         Assertions.assertEquals(expected, testActor, "Error: Actor wasn't returned"+
                 "Actual results: " + testActor);
+        throw new io.cucumber.java.PendingException();
     }
 }

@@ -60,26 +60,6 @@ public class ActorRepoTests {
         + "Actual results: " + Actual);
 
     }
- /*   @Test
-    void testGetAnActor(){
-        when(actorRepository.findById(1)).thenReturn(Optional.of(new Actor()));
-        Actor output = actorRepository.findById(1).get();
-        Actor expected = new Actor();
-        Assertions.assertEquals(expected, output, "Error: Incorrect ID was returned\n" +
-                "Actual results: " + output);
-    }
-
-    @Test
-    void editActorName(){
-        Actor actor = new Actor();
-        Assertions.assertEquals(null, actor.first_name);
-        when(actorRepository.findById(1)).thenReturn(Optional.of(actor));
-        Actor newActor = new Actor();
-        newActor.setFirst_name("Jeff");
-        ArgumentCaptor<Category> captor = ArgumentCaptor.forClass(Category.class);
-        sakilaAppApplication.editActor(1, newActor);
-        verify(actorRepository).save(newActor);
-    } */
 
     @Test
     void getActorID(){

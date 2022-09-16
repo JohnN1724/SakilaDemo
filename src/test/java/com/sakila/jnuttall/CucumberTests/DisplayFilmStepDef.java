@@ -29,8 +29,8 @@ public class DisplayFilmStepDef {
     private FilmCategoryRepository filmCategoryRepository;
 
 
-    @BeforeEach
-    void setup(){
+
+    public DisplayFilmStepDef(){
 
         filmRepository = mock(FilmRepository.class);
         categoryRepository = mock(CategoryRepository.class);
@@ -44,23 +44,24 @@ public class DisplayFilmStepDef {
 
     Film testFilm;
     Film expected;
-    @Given("there is an ID")
-    public void there_is_an_id() {
+    @Given("The webpage is loaded and is in use")
+    public void the_webpage_is_loaded_and_is_in_use() {
         int id = 1;
         expected = new Film();
         expected.setFilm_id(1);
-        expected.setTitle("test title");
-        expected.setDescription("Spooky test desc");
+        expected.setTitle("Jaws");
+        expected.setDescription("Horror film about a big shark");
     }
 
-    @When("the api is connected")
-    public void the_api_is_connected() {
+    @When("The API returns the list of films")
+    public void the_api_returns_the_list_of_films() {
         when(filmRepository.findById(1)).thenReturn(Optional.of(expected));
         testFilm = filmRepository.findById(1).get();
     }
 
-    @Then("display a single film")
-    public void display_a_single_film() {
-        Assertions.assertEquals(expected, testFilm, "oopsie doopsie");
+    @Then("Display a list of films")
+    public void display_a_list_of_films() {
+        Assertions.assertEquals(expected, testFilm, "Error: Desired film wasn't returned\n" +
+                "Actual results:" + testFilm);
     }
 }

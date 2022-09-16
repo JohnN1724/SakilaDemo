@@ -65,27 +65,6 @@ public class LanguageRepoTests {
                 + "Actual results: " + Actual);
 
     }
-
-/*    @Test
-    void testALanguage(){
-        when(languageRepository.findById(1)).thenReturn(Optional.of(new Language()));
-        Language output = languageRepository.findById(1).get();
-        Language expected = new Language();
-        Assertions.assertEquals(expected, output, "Error: Incorrect language was returned\n" +
-                "Actual results: " + output);
-
-    }
-
-    @Test
-    void testEditLanguage(){
-        Language language = new Language();
-        Assertions.assertEquals(null, language.name);
-        when(languageRepository.findById(1)).thenReturn(Optional.of(language));
-        Language newLanguage = new Language();
-        newLanguage.setName("Korean");
-        ArgumentCaptor<Language> captor = ArgumentCaptor.forClass(Language.class);
-        sakilaAppApplication.editLanguage(1, newLanguage);
-        verify(languageRepository).save(newLanguage);
-    } */
+    
 }
 

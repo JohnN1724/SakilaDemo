@@ -65,27 +65,6 @@ public class CategoryRepoTests {
 
     }
 
-/*    @Test
-    void testGetCategory(){
-        when(categoryRepository.findById(1)).thenReturn(Optional.of(new Category()));
-        Category output = categoryRepository.findById(1).get();
-        Category expected = new Category();
-        Assertions.assertEquals(expected, output, "Error: Category wasn't returned\n" +
-                "Actual results: " + output);
-
-    }
-
-    @Test
-    void editCategoryName(){
-        Category category = new Category();
-        Assertions.assertEquals(null, category.categoryName);
-        when(categoryRepository.findById(1)).thenReturn(Optional.of(category));
-        Category newCategory = new Category();
-        newCategory.setCategoryName("Action");
-        ArgumentCaptor<Category> captor = ArgumentCaptor.forClass(Category.class);
-        sakilaAppApplication.editCategory(1, newCategory);
-        verify(categoryRepository).save(newCategory);
-    } */
 
     @Test
     void getCategoryID(){

@@ -1,5 +1,5 @@
-Feature: Display an actor on load
-  Scenario: verify an actor loads
-    Given there is an Actor ID
-    And the api connects to actor
-    Then display an actor
+Feature: Display an actor
+  Scenario: verify the correct actor is returned
+    Given when an Actor ID is requested
+    And the API requests the actor
+    Then the actor is displayed

@@ -60,30 +60,56 @@ public class CategoryRepoTests {
         Iterable <Category> Expected = categoryIterable;
         Iterable <Category> Actual = sakilaAppApplication.getAllCategory();
 
-        Assertions.assertEquals(Expected, Actual, "Error: All categories weren't returned \n"
-        + "Actual results: " + Actual);
+        Assertions.assertEquals(Expected, Actual, "Error: All categories weren't returned\n" +
+                "Actual results: " + Actual);
 
     }
 
- /*   @Test
-    void testACategory(){
+/*    @Test
+    void testGetCategory(){
         when(categoryRepository.findById(1)).thenReturn(Optional.of(new Category()));
         Category output = categoryRepository.findById(1).get();
         Category expected = new Category();
-        Assertions.assertEquals(expected, output, "Error: Incorrect category was returned\n" +
+        Assertions.assertEquals(expected, output, "Error: Category wasn't returned\n" +
                 "Actual results: " + output);
 
     }
 
     @Test
-    void testEditCategory(){
+    void editCategoryName(){
         Category category = new Category();
         Assertions.assertEquals(null, category.categoryName);
         when(categoryRepository.findById(1)).thenReturn(Optional.of(category));
-        Category newName = new Category();
-        newName.setCategoryName("Action");
+        Category newCategory = new Category();
+        newCategory.setCategoryName("Action");
         ArgumentCaptor<Category> captor = ArgumentCaptor.forClass(Category.class);
-        sakilaAppApplication.editCategory(1, newName);
-        verify(categoryRepository).save(newName);
+        sakilaAppApplication.editCategory(1, newCategory);
+        verify(categoryRepository).save(newCategory);
     } */
+
+    @Test
+    void getCategoryID(){
+        Category category = new Category();
+        category.setCategoryId(2);
+        Assertions.assertEquals(2, category.getCategoryId(), "Error: Incorrect category ID was returned\n"+
+                "Actual results: " + category.getCategoryId());
+    }
+
+    @Test
+    void getCategoryName(){
+        Category category = new Category();
+        category.setCategoryName("Action");
+        Assertions.assertEquals("Action", category.getCategoryName(), "Error: Wrong category returned\n" +
+                "Actual results: " + category.getCategoryName());
+    }
+
+    @Test
+    void deleteCategory(){
+        Category category = new Category();
+        category.setCategoryName("Drama");
+        category.setCategoryId(3);
+        sakilaAppApplication.removeCategory(category.getCategoryId());
+        verify(categoryRepository).deleteById(category.getCategoryId());
+    }
+
 }

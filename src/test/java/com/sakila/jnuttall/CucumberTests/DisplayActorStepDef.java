@@ -49,8 +49,8 @@ public class DisplayActorStepDef {
         int id = 1;
         expected = new Actor();
         expected.setActorId(1);
-        expected.setFirst_name("test name");
-        expected.setLast_name("Spooky test last name");
+        expected.setFirst_name("First Name");
+        expected.setLast_name("Last Name");
     }
 
     @When("the api connects to actor")
@@ -60,7 +60,8 @@ public class DisplayActorStepDef {
     }
 
     @Then("display an actor")
-    public void display_a_single_film() {
-        Assertions.assertEquals(expected, testActor, "oopsie doopsie");
+    public void display_film() {
+        Assertions.assertEquals(expected, testActor, "Error: Actor wasn't returned"+
+                "Actual results: " + testActor);
     }
 }

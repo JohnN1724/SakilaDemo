@@ -60,26 +60,58 @@ public class ActorRepoTests {
         + "Actual results: " + Actual);
 
     }
-/*
-    @Test
-    void testAnActor(){
+ /*   @Test
+    void testGetAnActor(){
         when(actorRepository.findById(1)).thenReturn(Optional.of(new Actor()));
         Actor output = actorRepository.findById(1).get();
         Actor expected = new Actor();
-        Assertions.assertEquals(expected, output, "Error: Incorrect actor was returned\n" +
+        Assertions.assertEquals(expected, output, "Error: Incorrect ID was returned\n" +
                 "Actual results: " + output);
-
     }
 
     @Test
-    void testEditActor(){
+    void editActorName(){
         Actor actor = new Actor();
         Assertions.assertEquals(null, actor.first_name);
         when(actorRepository.findById(1)).thenReturn(Optional.of(actor));
-        Actor newFirstName = new Actor();
-        newFirstName.setFirst_name("Postperson");
-        ArgumentCaptor<Actor> captor = ArgumentCaptor.forClass(Actor.class);
-        sakilaAppApplication.editActor(1, newFirstName);
-        verify(actorRepository).save(newFirstName);
+        Actor newActor = new Actor();
+        newActor.setFirst_name("Jeff");
+        ArgumentCaptor<Category> captor = ArgumentCaptor.forClass(Category.class);
+        sakilaAppApplication.editActor(1, newActor);
+        verify(actorRepository).save(newActor);
     } */
+
+    @Test
+    void getActorID(){
+       Actor actor = new Actor();
+       actor.setActorId(2);
+       Assertions.assertEquals(2, actor.getActorId(), "Error: Incorrect actor id was returned\n" +
+               "Actual results: " + actor.getActorId());
+    }
+
+    @Test
+    void getActorFirstName(){
+        Actor actor = new Actor();
+        actor.setFirst_name("Keith");
+        Assertions.assertEquals("Keith", actor.getFirst_name(), "Error: Incorrect actor first name was returned\n" +
+                "Actual results: " + actor.getFirst_name());
+    }
+    @Test
+    void getActorLastName(){
+        Actor actor = new Actor();
+        actor.setLast_name("Jones");
+        Assertions.assertEquals("Jones", actor.getLast_name(), "Error: Incorrect actor last name was returned\n" +
+                "Actual results: " + actor.getLast_name());
+    }
+
+    @Test
+    void DeleteActorById(){
+        Actor actor = new Actor();
+        actor.setFirst_name("Bill");
+        actor.setLast_name("Bob");
+        actor.setActorId(3);
+        sakilaAppApplication.removeActor(actor.getActorId());
+        verify(actorRepository).deleteById(actor.getActorId());
+    }
+
 }

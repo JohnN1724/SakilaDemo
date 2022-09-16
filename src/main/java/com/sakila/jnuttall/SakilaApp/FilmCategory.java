@@ -1,6 +1,5 @@
 package com.sakila.jnuttall.SakilaApp;
 
-import com.sakila.jnuttall.scraper.Film;
 
 import javax.persistence.*;
 
